@@ -1,0 +1,14 @@
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\bin\Debug\netcoreapp2.2\JWT.Authentication.deps.json
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\bin\Debug\netcoreapp2.2\JWT.Authentication.runtimeconfig.json
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\bin\Debug\netcoreapp2.2\JWT.Authentication.runtimeconfig.dev.json
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\bin\Debug\netcoreapp2.2\JWT.Authentication.dll
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\obj\Debug\netcoreapp2.2\JWT.Authentication.csproj.CoreCompileInputs.cache
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\obj\Debug\netcoreapp2.2\JWT.Authentication.RazorAssemblyInfo.cache
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\obj\Debug\netcoreapp2.2\JWT.Authentication.RazorAssemblyInfo.cs
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\obj\Debug\netcoreapp2.2\JWT.Authentication.AssemblyInfoInputs.cache
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\obj\Debug\netcoreapp2.2\JWT.Authentication.AssemblyInfo.cs
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\obj\Debug\netcoreapp2.2\JWT.Authentication.RazorTargetAssemblyInfo.cache
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\bin\Debug\netcoreapp2.2\JWT.Authentication.pdb
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\obj\Debug\netcoreapp2.2\JWT.Authentication.dll
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\obj\Debug\netcoreapp2.2\JWT.Authentication.pdb
+C:\Projetos\jwt-authentication-apis\JWT.Authentication\JWT.Authentication\obj\Debug\netcoreapp2.2\JWT.Authentication.csprojAssemblyReference.cache
