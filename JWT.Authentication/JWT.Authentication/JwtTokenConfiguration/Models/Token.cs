@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JWT.Authentication.JWTConfiguration.Models
+namespace JWT.Authentication.JwtTokenConfiguration.Models
 {
-    public class TokenConfigurations
+    public class Token
     {
         public String Audience { get; set; }
         public String Issuer { get; set; }

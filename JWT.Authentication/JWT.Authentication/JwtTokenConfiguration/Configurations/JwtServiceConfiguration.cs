@@ -1,5 +1,5 @@
-﻿using JWT.Authentication.JWTConfiguration.AuthenticationConfiguration;
-using JWT.Authentication.JWTConfiguration.Models;
+﻿using JWT.Authentication.JwtTokenConfiguration.AuthenticationConfiguration;
+using JWT.Authentication.JwtTokenConfiguration.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
@@ -10,19 +10,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JWT.Authentication.JWTConfiguration.ServiceConfiguration
+namespace JWT.Authentication.JwtTokenConfiguration.ServiceConfiguration
 {
-    public static class JWTServiceConfiguration
+    public static class JwtServiceConfiguration
     {
         public static void ConfigureAuthenticationServices(IServiceCollection services, IConfiguration configuration)
         {
             // Authentication methods
-            var signingConfigurations = new SigningConfigurations();
+            var signingConfigurations = new SigningConfiguration();
             services.AddSingleton(signingConfigurations);
 
-            var tokenConfigurations = new TokenConfigurations();
-            new ConfigureFromConfigurationOptions<TokenConfigurations>(configuration.GetSection("TokenConfigurations")).Configure(tokenConfigurations);
-            services.AddSingleton(tokenConfigurations);
+            var token = new Token();
+            new ConfigureFromConfigurationOptions<Token>(configuration.GetSection("TokenConfigurations")).Configure(token);
+            services.AddSingleton(token);
 
             services.AddAuthentication(authOptions =>
             {
@@ -33,8 +33,8 @@ namespace JWT.Authentication.JWTConfiguration.ServiceConfiguration
                 {
                     var paramsValidation = bearerOptions.TokenValidationParameters;
                     paramsValidation.IssuerSigningKey = signingConfigurations.Key;
-                    paramsValidation.ValidAudience = tokenConfigurations.Audience;
-                    paramsValidation.ValidIssuer = tokenConfigurations.Issuer;
+                    paramsValidation.ValidAudience = token.Audience;
+                    paramsValidation.ValidIssuer = token.Issuer;
 
                     // Valida a assinatura de um token recebido
                     paramsValidation.ValidateIssuerSigningKey = true;

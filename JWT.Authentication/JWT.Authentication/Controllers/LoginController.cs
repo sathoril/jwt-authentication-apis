@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Threading.Tasks;
-using JWT.Authentication.FakeDataAccessLayer;
+﻿using JWT.Authentication.FakeDataAccessLayer;
 using JWT.Authentication.FakeDataAccessLayer.Entities;
-using JWT.Authentication.JWTConfiguration;
-using JWT.Authentication.JWTConfiguration.AuthenticationConfiguration;
-using JWT.Authentication.JWTConfiguration.Models;
+using JWT.Authentication.JwtTokenConfiguration;
+using JWT.Authentication.JwtTokenConfiguration.AuthenticationConfiguration;
+using JWT.Authentication.JwtTokenConfiguration.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
 namespace JWT.Authentication.Controllers
 {
@@ -22,7 +14,7 @@ namespace JWT.Authentication.Controllers
     {
         [AllowAnonymous]
         [HttpPost]
-        public object Post([FromBody]User user, [FromServices]FakeUserRepository repository, [FromServices]SigningConfigurations signingConfigurations, [FromServices]TokenConfigurations tokenConfigurations)
+        public object Post([FromBody]User user, [FromServices]FakeUserRepository repository, [FromServices]SigningConfiguration signingConfigurations, [FromServices]Token token)
         {
             bool validCredentials = false;
 
@@ -39,7 +31,7 @@ namespace JWT.Authentication.Controllers
             if(!validCredentials)
                 return new { authenticated = false, message = "Failed to authenticate!" };
 
-            var obj = TokenProvider.GetToken(user, tokenConfigurations, signingConfigurations);
+            var obj = TokenProvider.GetToken(user, token, signingConfigurations);
             return obj;
         }
     }

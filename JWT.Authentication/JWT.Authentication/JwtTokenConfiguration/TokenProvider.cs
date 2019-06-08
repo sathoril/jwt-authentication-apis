@@ -1,14 +1,13 @@
 ﻿using JWT.Authentication.FakeDataAccessLayer.Entities;
+using JWT.Authentication.JwtTokenConfiguration.AuthenticationConfiguration;
+using JWT.Authentication.JwtTokenConfiguration.Models;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
-using System.Threading.Tasks;
 
-namespace JWT.Authentication.JWTConfiguration
+namespace JWT.Authentication.JwtTokenConfiguration
 {
     public static class TokenProvider
     {
@@ -25,31 +24,31 @@ namespace JWT.Authentication.JWTConfiguration
             return identity;
         }
 
-        public static object GetToken(User user, Models.TokenConfigurations tokenConfigurations, AuthenticationConfiguration.SigningConfigurations signingConfigurations)
+        public static object GetToken(User user, Token token, SigningConfiguration signingConfigurations)
         {
             ClaimsIdentity identity = GetIdentity(user);
 
             DateTime creationDate = DateTime.Now;
-            DateTime expirationDate = creationDate + TimeSpan.FromSeconds(tokenConfigurations.Seconds);
+            DateTime expirationDate = creationDate + TimeSpan.FromSeconds(token.Seconds);
 
             var handler = new JwtSecurityTokenHandler();
             var securityToken = handler.CreateToken(new SecurityTokenDescriptor
             {
-                Issuer = tokenConfigurations.Issuer,
-                Audience = tokenConfigurations.Audience,
+                Issuer = token.Issuer,
+                Audience = token.Audience,
                 SigningCredentials = signingConfigurations.SigningCredentials,
                 Subject = identity,
                 NotBefore = creationDate,
                 Expires = expirationDate
             });
-            var token = handler.WriteToken(securityToken);
+            var novoToken = handler.WriteToken(securityToken);
 
             return new
             {
                 authenticated = true,
                 created = creationDate.ToString("yyyy-MM-dd HH:mm:ss"),
                 expiration = expirationDate.ToString("yyyy-MM-dd HH:mm:ss"),
-                accessToken = token,
+                accessToken = novoToken,
                 message = "OK"
             };
         }

@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JWT.Authentication.FakeDataAccessLayer;
-using JWT.Authentication.JWTConfiguration.ServiceConfiguration;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
+﻿using JWT.Authentication.FakeDataAccessLayer;
+using JWT.Authentication.JwtTokenConfiguration.ServiceConfiguration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace JWT.Authentication
 {
@@ -32,7 +23,7 @@ namespace JWT.Authentication
             services.AddTransient<FakeUserRepository>();
 
             // Configures JWT Authentication
-            JWTServiceConfiguration.ConfigureAuthenticationServices(services, this.Configuration);
+            JwtServiceConfiguration.ConfigureAuthenticationServices(services, this.Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

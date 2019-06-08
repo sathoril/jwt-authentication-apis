@@ -6,14 +6,14 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
-namespace JWT.Authentication.JWTConfiguration.AuthenticationConfiguration
+namespace JWT.Authentication.JwtTokenConfiguration.AuthenticationConfiguration
 {
-    public class SigningConfigurations
+    public class SigningConfiguration
     {
         public SecurityKey Key { get; }
         public SigningCredentials SigningCredentials { get; }
 
-        public SigningConfigurations()
+        public SigningConfiguration()
         {
             using(var provider = new RSACryptoServiceProvider(2048))
             {
