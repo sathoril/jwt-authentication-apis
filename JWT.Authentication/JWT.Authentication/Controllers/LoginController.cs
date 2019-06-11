@@ -14,7 +14,11 @@ namespace JWT.Authentication.Controllers
     {
         [AllowAnonymous]
         [HttpPost]
-        public object Post([FromBody]User user, [FromServices]FakeUserRepository repository, [FromServices]SigningConfiguration signingConfigurations, [FromServices]Token token)
+        [ProducesResponseType(201, Type = typeof(void))]
+        /// <summary>
+        /// Authenticates the user passed inside request body, and returns token object
+        /// </summary>
+        public object AuthenticateUser([FromBody]User user, [FromServices]FakeUserRepository repository, [FromServices]SigningConfiguration signingConfigurations, [FromServices]Token token)
         {
             bool validCredentials = false;
 
